@@ -1,5 +1,5 @@
 exports.run = async (client, msg, [nick = ""]) => {
-  await msg.member.setNickname(nick);
+  await msg.guild.me.setNickname(nick);
   const text = nick.length > 0 ? `Nickname changed to ${nick}` : "Nickname Cleared";
   return msg.channel.send(text).then(m => m.delete(5000));
 };
