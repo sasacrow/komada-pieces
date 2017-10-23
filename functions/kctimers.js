@@ -19,3 +19,23 @@ exports.init = (client) => {
             client.channels.get('199598319620587520').send(`PvP will reset in 15 minutes.`);
         if ((timeJP.hour() == 3 || timeJP.hour() == 15) && timeJP.minute() == 0)
             client.channels.get('199598319620587520').send(`It's **${timeJP.hour()}:${timeJP.minute()}0** in Japan, PvP has been reset.`);
+                 if (timeJP.hour() == 4 && timeJP.minute() == 30)
+            client.channels.get('199598319620587520').send(`Daily Quests will reset in 30 minutes.`);
+
+        if (timeJP.hour() == 4 && timeJP.minute() == 45)
+            client.channels.get('199598319620587520').send(`Daily Quests will reset in 15 minutes.`);
+
+        if (timeJP.hour() == 5 && timeJP.minute() == 0) {
+            client.channels.get('199598319620587520').send(`It's **${timeJP.hour()}:${timeJP.minute()}0** in Japan, Daily Quests have been reset.`);
+
+            if (timeJP.day() == 1)
+                client.channels.get('199598319620587520').send(`It's **Monday** in Japan, Weekly Quests have been reset.`);
+
+            if (timeJP.date() == 1) {
+                client.channels.get('199598319620587520').send(`It's **1st of ${monthNames[timeJP.month()]}** in Japan, Monthly Quests have been reset.`);
+                if (timeJP.month() == 2 || timeJP.month() == 5 || timeJP.month() == 8 || timeJP.month() == 11)
+                    client.channels.get('199598319620587520').send(`**Quarter ${Math.floor(timeJP.month()/2)}** has ended, Quarterly Quests have been reset.`);
+            }
+        }
+    }, 60000);
+}
